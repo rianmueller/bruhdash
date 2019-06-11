@@ -10,13 +10,13 @@ var global = window || GLOBAL;
 global.bruhdash = {
 
   // returns the first element of an array
-  first: function () {
-      
+  first: function (array) {
+    return array.shift();
   },
 
   // returns the last element of an array
-  last: function () {
-
+  last: function (array) {
+    return array.pop();
   },
 
   // returns the index of the first matching element from left to right
