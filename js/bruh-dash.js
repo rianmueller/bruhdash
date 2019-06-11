@@ -7,13 +7,6 @@ var global = window || GLOBAL;
  * documentation up in a browser window at all times when working on projects!          *
  ****************************************************************************************/
 
-//test zone
-
-let fooArray = [1, 2, 3];
-console.log(fooArray.indexOf(4));
-
-//end test zone
-
 global.bruhdash = {
 
   // returns the first element of an array
@@ -27,13 +20,13 @@ global.bruhdash = {
   },
 
   // returns the index of the first matching element from left to right
-  indexOf: function (array) {
-    return array.indexOf();
+  indexOf: function (array, element) {
+    return array.indexOf(element);
   },
 
   // returns the index of the first matching element from right to left
-  lastIndexOf: function (array) {
-    return array.lastIndexOf();
+  lastIndexOf: function (array, element) {
+    return array.lastIndexOf(element);
   },
 
   // returns an array with all elements except for the last element
