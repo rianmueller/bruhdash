@@ -88,6 +88,7 @@ global.bruhdash = {
   },
 
   // creates a slice of an array with n elements taken from the end
+  // [takeRight(array, [n=1])]
   takeRight: function (array, n) {
     if (n == undefined){
       n = 1;
@@ -97,6 +98,7 @@ global.bruhdash = {
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
+  // [fill(array, value, [start=0], [end=array.length])]
   fill: function(array, value, startIndex, endIndex) {
     if (startIndex == undefined){
       startIndex = 0;
@@ -111,21 +113,36 @@ global.bruhdash = {
   },
 
   // removes all given values from an array
-  pull: function () {
-
+  // [pull(array, [values])]
+  pull: function (array, values) {
+    for (i = 0; i < values.length; i++){
+      for (j = 0; j < array.length; j++){
+        if (array[j] === values[i]){
+          array.splice(j, 1);
+        }
+      }
+    }
+    return array;
   },
 
   // removes elements of an array corresponding to the given indices
-  pullAt: function () {
-
+  // [pullAt(array, [indexes])]
+  pullAt: function (array, indices) {
+    let output = [];
+    for (i = 0; i < indices.length; i++){
+      output.push(array[indices[i]]);
+    }
+    return output;
   },
 
   // creates an array excluding all the specified values
+  // without(array, [values])]
   without: function() {
 
   },
 
   // returns an array with specified values excluded
+  // [difference(array, [values])]
   difference: function() {
 
   },
