@@ -97,8 +97,17 @@ global.bruhdash = {
 
   // fills elements of array with specified value from the start index
   // up to but not including the end index
-  fill: function() {
-
+  fill: function(array, value, startIndex, endIndex) {
+    if (startIndex == undefined){
+      startIndex = 0;
+    }
+    if (endIndex == undefined){
+      endIndex = array.length;
+    }
+    for (i = startIndex; i < endIndex; i++){
+      array[i] = value;
+    }
+    return array;
   },
 
   // removes all given values from an array
