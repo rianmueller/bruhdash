@@ -166,28 +166,37 @@ global.bruhdash = {
    *******************/ 
 
   // creates an array of grouped elements
-  zip: function () {
-
+  // [zip([arrays])]
+  zip: function (arrayA, arrayB) {
+    let output = [];
+    for (i = 0; i < arrayA.length; i++){
+      output.push([arrayA[i], arrayB[i]])
+    }
+    return output;
   },
 
   // creates an array of grouped elements in their pre-zip configuration
+  // [unzip(array)]
   unzip: function () {
 
   },
 
   // creates an array of elements into groups of length of specified size
+  // [chunk(array, [size=1])]
   chunk: function(){
 
   },
 
   // iterates over elements of a collection and invokes iteratee for each element
   // Note: this should work for arrays and objects
+  // [forEach(collection, [iteratee])]
   forEach: function() {
 
   },
 
   // creates an array of values by running each element in collection thru the iteratee
   // Note: this should work for arrays and objects
+  // [map(collection, [iteratee])]
   map: function() {
 
   },
@@ -198,6 +207,7 @@ global.bruhdash = {
 
   // iterates over elements of a collection and returns all elements that the predicate returns truthy for
   // Note: this should work for arrays and objects
+  // [filter(collection, [predicate])]
   filter: function() {
 
   },
@@ -205,6 +215,7 @@ global.bruhdash = {
   // Reduces the collection to a value which is the accumulated result of running each element
   // in the collection through an iteratee
   // Note: this should work for arrays and objects
+  // [reduce(collection, [iteratee], [accumulator])]
   reduce: function() {
     
   }
