@@ -10,31 +10,37 @@ var global = window || GLOBAL;
 global.bruhdash = {
 
   // returns the first element of an array
+  // [first(array)]
   first: function (array) {
     return array.shift();
   },
 
   // returns the last element of an array
+  // [last(array)]
   last: function (array) {
     return array.pop();
   },
 
   // returns the index of the first matching element from left to right
-  indexOf: function (array, element) {
-    return array.indexOf(element);
+  // [indexOf(array, value, [fromIndex=0])]
+  indexOf: function (array, value) {
+    return array.indexOf(value);
   },
 
   // returns the index of the first matching element from right to left
-  lastIndexOf: function (array, element) {
-    return array.lastIndexOf(element);
+  // [lastIndexOf(array, value, [fromIndex=array.length-1])]
+  lastIndexOf: function (array, value) {
+    return array.lastIndexOf(value);
   },
 
   // returns an array with all elements except for the last element
+  // [initial(array)]
   initial: function (array) {
     return array.slice(0, -1);
   },
   
   // returns an array with all falsey values removed
+  // [compact(array)]
   compact: function(array) {
     for(let i = array.length - 1; i >= 0; i--){
       if(Boolean(array[i]) == false){
@@ -45,18 +51,25 @@ global.bruhdash = {
   },
 
   // creates a slice of an array from the start index up to but not including the end index
-  slice: function () {
-
+  // [slice(array, [start=0], [end=array.length]
+  slice: function (array) {
+    array.slice(0, -1);
+    return array
   },
 
   // returns a slice of array with n elements dropped from the beignning
-  drop: function(){
-
+  // [drop(array, [n=1])]
+  drop: function(array, n){
+    if (n == undefined){
+      n = 1;
+    }
+    array.splice(0, n);
+    return array;
   },
 
   // returns a slice of array with n elements dropped from the end
-  dropRight: function() {
-
+  dropRight: function(array, n) {
+    return array.slice(n);
   },
 
   // creates a slice of an array with n elements taken from the beginning
