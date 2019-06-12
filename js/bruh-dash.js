@@ -177,8 +177,17 @@ global.bruhdash = {
 
   // creates an array of grouped elements in their pre-zip configuration
   // [unzip(array)]
-  unzip: function () {
-
+  unzip: function (array) {
+    let partA = [];
+    let partB = [];
+    let output = [];
+    for (i = 0; i < array.length; i++){
+      partA.push(array[i][0]);
+      partB.push(array[i][1]);
+    }
+    output.push(partA);
+    output.push(partB);
+    return output;
   },
 
   // creates an array of elements into groups of length of specified size
