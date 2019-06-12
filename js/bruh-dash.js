@@ -114,12 +114,13 @@ global.bruhdash = {
 
   // removes all given values from an array
   // [pull(array, [values])]
-  pull: function (array, values) {
-    for (i = 0; i < values.length; i++){
-      for (j = 0; j < array.length; j++){
-        if (array[j] === values[i]){
-          array.splice(j, 1);
-        }
+  pull: function (array, valueA, valueB) {
+    for (i = 0; i < array.length; i++){
+      if (array[i] === valueA){
+        array.splice(array[i], 1);
+      }
+      if (array[i] === valueB){
+        array.splice(array[i], 1);
       }
     }
     return array;
