@@ -24,13 +24,23 @@ global.bruhdash = {
   // returns the index of the first matching element from left to right
   // [indexOf(array, value, [fromIndex=0])]
   indexOf: function (array, value) {
-    return array.indexOf(value);
+    for (i = 0; i < array.length; i++) {
+      if (array[i] === value) {
+        return i;
+      } 
+    }
+    return -1;
   },
 
   // returns the index of the first matching element from right to left
   // [lastIndexOf(array, value, [fromIndex=array.length-1])]
   lastIndexOf: function (array, value) {
-    return array.lastIndexOf(value);
+  for (i = array.length; i > -1; i--) {
+    if (array[i] === value) {
+      return i;
+    } 
+  }
+  return -1;
   },
 
   // returns an array with all elements except for the last element
@@ -212,7 +222,7 @@ global.bruhdash = {
   // iterates over elements of a collection and invokes iteratee for each element
   // Note: this should work for arrays and objects
   // [forEach(collection, [iteratee])]
-  forEach: function() {
+  forEach: function(collection, iteratee) {
 
   },
 
