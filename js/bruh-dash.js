@@ -35,12 +35,12 @@ global.bruhdash = {
   // returns the index of the first matching element from right to left
   // [lastIndexOf(array, value, [fromIndex=array.length-1])]
   lastIndexOf: function (array, value) {
-  for (i = array.length; i > -1; i--) {
-    if (array[i] === value) {
-      return i;
-    } 
-  }
-  return -1;
+    for (i = array.length; i > -1; i--) {
+      if (array[i] === value) {
+        return i;
+      } 
+    }
+    return -1;
   },
 
   // returns an array with all elements except for the last element
@@ -223,8 +223,26 @@ global.bruhdash = {
   // Note: this should work for arrays and objects
   // [forEach(collection, [iteratee])]
   forEach: function(collection, iteratee) {
-
+    let output = [];
+    // for (i = 0; i < collection.length; i++) {
+    //   output.push(iteratee(collection[i]));
+    // }
+    for (var key in collection) {
+      output.push(iteratee(collection[key]));
+      }
+    return output;
   },
+
+      //how to loop through an object:
+      // var string1 = "";
+      // var object1 = {a: 1, b: 2, c: 3};
+      
+      // for (var property1 in object1) {
+      //   string1 += object1[property1];
+      // }
+      
+      // console.log(string1);
+      // expected output: "123"
 
   // creates an array of values by running each element in collection thru the iteratee
   // Note: this should work for arrays and objects
