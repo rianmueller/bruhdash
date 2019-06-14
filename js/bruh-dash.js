@@ -224,7 +224,7 @@ global.bruhdash = {
   // [forEach(collection, [iteratee])]
   forEach: function(collection, iteratee) {
     let output = [];
-    for (var key in collection) {
+    for (let key in collection) {
       output.push(iteratee(collection[key]));
       }
     return output;
@@ -235,7 +235,7 @@ global.bruhdash = {
   // [map(collection, [iteratee])]
   map: function(collection, iteratee) {
     let output = [];
-    for (var key in collection) {
+    for (let key in collection) {
       output.push(iteratee(collection[key]));
       }
     return output;
@@ -248,8 +248,19 @@ global.bruhdash = {
   // iterates over elements of a collection and returns all elements that the predicate returns truthy for
   // Note: this should work for arrays and objects
   // [filter(collection, [predicate])]
-  filter: function() {
-
+  filter: function(collection, predicate) {
+    let truthy = [];
+    for (let key in collection){
+      if (predicate(collection[key]) !== false && 
+          predicate(collection[key]) !== 0 &&
+          predicate(collection[key]) !== "" &&
+          predicate(collection[key]) !== null &&
+          predicate(collection[key]) !== undefined &&
+          predicate(collection[key]).isNAN !== true){
+        truthy.push(collection[key]);
+      }
+    }
+    return truthy;
   },
 
   // Reduces the collection to a value which is the accumulated result of running each element
