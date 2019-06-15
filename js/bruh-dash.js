@@ -223,20 +223,20 @@ global.bruhdash = {
   // Note: this should work for arrays and objects
   // [forEach(collection, [iteratee])]
   // The forEach method takes in an object "collection" and a function "iteratee", loops through "collection", and passes each element in the object to iteratee. Iteratee takes in the arguments "key" and "item" and passes "item" into the array "result". forEach should then return the completed array "result".
-// var result = [];
-// bruhdash.forEach([1,2,3], function(item, key) {
-//   result.push(item)
-// })
-// assert.deepEqual(result, [1,2,3])
+  // var result = [];
+  // bruhdash.forEach([1,2,3], function(item, key) {
+  //   result.push(item)
+  // })
+  // assert.deepEqual(result, [1,2,3])
 
-// let collection = [1,2,3];
-// let result = [];
-// function iteratee(item, key){
-//   result.push(item)
-// };
-// expect: [1,2,3]
+  // let collection = [1,2,3];
+  // let result = [];
+  // function iteratee(item, key){
+  //   result.push(item)
+  // };
+  // expect: [1,2,3]
   forEach: function(collection, iteratee) {
-    let result = []; //why is this apparently redundant declaration necessary?
+    let result = []; //doesn't the test case declare this?
     for (let key in collection) {
       let item = collection[key];
       iteratee(item, key);
@@ -286,13 +286,18 @@ global.bruhdash = {
   // in the collection through an iteratee
   // Note: this should work for arrays and objects
   // [reduce(collection, [iteratee], [accumulator])]
+  // assert.deepEqual(bruhdash.reduce({'a':1, 'b':2, 'c':3}, function(total, value) {
+  //   return total + value
+  // }), 6)
+  // The reduce method takes in the object "collection" and the function "iteratee", loops through the collection, and passes each element into the iteratee function. The iteratee function takes in the parameters total and value, and returns the sum. The total parameter will have to be defined by the reduce method. The reduce function should finally return the total.
   reduce: function(collection, iteratee, accumulator) {
-    // let sum = 0;
-    // for (let key in collection) {
-    //   sum += iteratee(collection[key])
-    //   //sum.push(iteratee(collection[key]));
-    //   }
-    // return sum;
-    return 6;
+    if(accumulator === undefined){
+      accumulator = 0;
+    }
+    let total = accumulator;
+    for (let key in collection) {
+      total = iteratee(total, collection[key])
+      }
+    return total;
   }
 };
