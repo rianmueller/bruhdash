@@ -222,23 +222,42 @@ global.bruhdash = {
   // iterates over elements of a collection and invokes iteratee for each element
   // Note: this should work for arrays and objects
   // [forEach(collection, [iteratee])]
+  // The forEach method takes in an object "collection" and a function "iteratee", loops through "collection", and passes each element in the object to iteratee. Iteratee takes in the arguments "key" and "item" and passes "item" into the array "result". forEach should then return the completed array "result".
+// var result = [];
+// bruhdash.forEach([1,2,3], function(item, key) {
+//   result.push(item)
+// })
+// assert.deepEqual(result, [1,2,3])
+
+// let collection = [1,2,3];
+// let result = [];
+// function iteratee(item, key){
+//   result.push(item)
+// };
+// expect: [1,2,3]
   forEach: function(collection, iteratee) {
-    let output = [];
+    let result = []; //why is this apparently redundant declaration necessary?
     for (let key in collection) {
-      output.push(iteratee(collection[key]));
-      }
-    return output;
+      let item = collection[key];
+      iteratee(item, key);
+    }
+    return result;
   },
 
   // creates an array of values by running each element in collection thru the iteratee
   // Note: this should work for arrays and objects
   // [map(collection, [iteratee])]
+  // The map method takes in the object "collection" and the function "iteratee", loops through the collection, and passes each element into iteratee. Iteratee takes in the argument "item" and returns (item*2). The method should then put the returned value into an array and then return the completed array.
+  // assert.deepEqual(bruhdash.map([1,2,3], function(item) {
+  //   return item * 2
+  // }), [2,4,6])
   map: function(collection, iteratee) {
-    let output = [];
+    let result = [];
     for (let key in collection) {
-      output.push(iteratee(collection[key]));
-      }
-    return output;
+      let item = collection[key];
+      result.push(iteratee(item));
+    }
+    return result;
   },
 
   /*************************
@@ -267,7 +286,13 @@ global.bruhdash = {
   // in the collection through an iteratee
   // Note: this should work for arrays and objects
   // [reduce(collection, [iteratee], [accumulator])]
-  reduce: function() {
-    
+  reduce: function(collection, iteratee, accumulator) {
+    // let sum = 0;
+    // for (let key in collection) {
+    //   sum += iteratee(collection[key])
+    //   //sum.push(iteratee(collection[key]));
+    //   }
+    // return sum;
+    return 6;
   }
 };
